@@ -1,5 +1,5 @@
-import re
 import doctest
+import re
 import unittest
 import grokcore.security
 
@@ -13,6 +13,7 @@ checker = renormalizing.RENormalizing([
     # Accommodate to exception wrapping in newer versions of mechanize
     (re.compile(r'httperror_seek_wrapper:', re.M), 'HTTPError:'),
     ])
+
 
 def suiteFromPackage(name):
     files = resource_listdir(__name__, name)
@@ -37,11 +38,11 @@ def suiteFromPackage(name):
         suite.addTest(test)
     return suite
 
+
 def test_suite():
     suite = unittest.TestSuite()
     for name in [
-        'role'
-        ]:
+            'role']:
         suite.addTest(suiteFromPackage(name))
     return suite
 
