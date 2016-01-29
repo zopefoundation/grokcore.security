@@ -1,7 +1,10 @@
+import doctest
 import re
 import unittest
 from pkg_resources import resource_listdir
-from zope.testing import doctest, cleanup, renormalizing
+
+from zope.testing import cleanup, renormalizing
+
 
 def cleanUpZope(test):
     cleanup.cleanUp()
@@ -12,8 +15,8 @@ checker = renormalizing.RENormalizing([
     # exceptions appear in traceback printouts.
     (re.compile(
         r"ConfigurationExecutionError: <class '([\w.]+)'>:"),
-        r'ConfigurationExecutionError: \1:'),
-        ])
+        r'ConfigurationExecutionError: \1:')])
+
 
 def suiteFromPackage(name):
     files = resource_listdir(__name__, name)
@@ -30,18 +33,17 @@ def suiteFromPackage(name):
             dottedname,
             tearDown=cleanUpZope,
             checker=checker,
-            optionflags=doctest.ELLIPSIS+
-            doctest.NORMALIZE_WHITESPACE)
+            optionflags=doctest.ELLIPSIS + doctest.NORMALIZE_WHITESPACE)
         suite.addTest(test)
     return suite
+
 
 def test_suite():
     suite = unittest.TestSuite()
     for name in [
-        'permissions',
-        'role',
-        'security',
-        ]:
+            'permissions',
+            'role',
+            'security']:
         suite.addTest(suiteFromPackage(name))
     return suite
 
