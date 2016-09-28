@@ -12,6 +12,7 @@
 #
 ##############################################################################
 """Grokkers for security-related components."""
+from builtins import str
 
 import martian
 import grokcore.component
@@ -39,8 +40,10 @@ class PermissionGrokker(martian.ClassGrokker):
                 "grok.name to specify one.", factory)
         # We can safely convert to unicode, since the directives make sure
         # it is either unicode already or ASCII.
-        permission = factory(unicode(name), unicode(title),
-                             unicode(description))
+        permission = factory(
+            u'{}'.format(str(name)),  # python2 and 3
+            u'{}'.format(str(title)),
+            u'{}'.format(str(description)))
 
         config.action(
             discriminator=('utility', IPermission, name),
