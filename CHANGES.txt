@@ -1,8 +1,8 @@
 Changes
 =======
 
-1.6.4 (unreleased)
-------------------
+1.7 (2018-01-03)
+----------------
 
 - Python 3 compatibility.
 
