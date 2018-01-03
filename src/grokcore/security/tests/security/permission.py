@@ -17,12 +17,14 @@ class we registered:
 The object we obtain also complies with the ``IPermission`` interface,
 meaning it has all the required attributes set.
 
-  >>> permission.id
-  u'the.permission'
-  >>> permission.title
-  u'The permission!'
-  >>> permission.description
-  u'This is *the* permission.'
+  >>> print(permission.id)
+  the.permission
+
+  >>> print(permission.title)
+  The permission!
+
+  >>> print(permission.description)
+  This is *the* permission.
 """
 
 import grokcore.security as grok

@@ -15,7 +15,7 @@ to implement the zope.security.interfaces.IPermission interface::
   ...         pass
   Traceback (most recent call last):
   ...
-  GrokImportError: You can only pass unicode, ASCII, or a subclass of
-  grok.Permission to the 'require' directive.
+  martian.error.GrokImportError: You can only pass unicode, ASCII, or a \
+  subclass of grok.Permission to the 'require' directive.
 
 """

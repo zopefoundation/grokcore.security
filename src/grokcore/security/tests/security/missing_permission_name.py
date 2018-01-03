@@ -5,8 +5,8 @@ doesn't, you'll get an error message:
   >>> grok.testing.grok(__name__)
   Traceback (most recent call last):
   ...
-  GrokError: A permission needs to have a dotted name for its id.
-  Use grok.name to specify one.
+  martian.error.GrokError: A permission needs to have a dotted name for its \
+  id. Use grok.name to specify one.
 """
 
 import grokcore.security as grok
