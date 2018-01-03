@@ -21,11 +21,17 @@ import grokcore.security
 from zope.security.interfaces import IPermission
 from martian.error import GrokError
 
+
 PY2 = sys.version_info[0] == 2
+
+
+if not PY2:
+    unicode = lambda s: s
 
 
 def default_fallback_to_name(factory, module, name, **data):
     return name
+
 
 class PermissionGrokker(martian.ClassGrokker):
     martian.component(grokcore.security.Permission)
@@ -40,20 +46,13 @@ class PermissionGrokker(martian.ClassGrokker):
             raise GrokError(
                 "A permission needs to have a dotted name for its id. Use "
                 "grok.name to specify one.", factory)
-        if PY2:
-            # We can safely convert to unicode, since the directives make sure
-            # it is either unicode already or ASCII.
-            permission = factory(
-                unicode(name),
-                unicode(title),
-                unicode(description))
-        else:
-            permission = factory(name, title, description)
+        permission = factory(
+            unicode(name), unicode(title), unicode(description))
 
         config.action(
             discriminator=('utility', IPermission, name),
             callable=grokcore.component.provideUtility,
             args=(permission, IPermission, name),
-            order=-1 # need to do this early in the process
+            order=-1  # need to do this early in the process
             )
         return True
