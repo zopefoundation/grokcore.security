@@ -58,10 +58,10 @@ if HAVE_ROLE:
             # We can safely convert to unicode, since the directives makes sure
             # it is either unicode already or ASCII.
             if not isinstance(title, Message):
-                title = unicode(title)
+                title = u'{}'.format(str(title))  # python2 and 3
             if not isinstance(description, Message):
-                description = unicode(description)
-            role = factory(unicode(name), title, description)
+                description = u'{}'.format(str(description))  # python2 and 3
+            role = factory(u'{}'.format(str(name)), title, description)
 
             config.action(
                 discriminator=('utility', IRole, name),

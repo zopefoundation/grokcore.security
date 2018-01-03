@@ -9,17 +9,19 @@ internationalized title and description of the defined roles.
   >>> from zope.component import getUtility
   >>> from zope.i18nmessageid import Message
 
-A grok.Role without any internationalization.
-The id, title and description should be unicode::
+A grok.Role without any internationalization. The id, title and description
+should be unicode::
 
   >>> role = getUtility(IRole, name="RoleWithoutI18n")
-  >>> role.id
-  u'RoleWithoutI18n'
-  >>> role.title
-  u'RoleWithoutI18n'
-  >>> role.description
-  u'My role without i18n'
-  >>>
+  >>> print(role.id)
+  RoleWithoutI18n
+
+  >>> print(role.title)
+  RoleWithoutI18n
+
+  >>> print(role.description)
+  My role without i18n
+
   >>> isinstance(role.id, Message)
   False
   >>> isinstance(role.title, Message)
@@ -28,11 +30,9 @@ The id, title and description should be unicode::
   False
 
 A grok.Role registered with the name and description directives only, both
-internationalized.
-The id is taken from the name directive and should not be a Message object.
-The title is taken from the name directive because the title directive
-is not used.
-::
+internationalized. The id is taken from the name directive and should not be a
+Message object. The title is taken from the name directive because the title
+directive is not used.::
 
   >>> role = getUtility(IRole, name="RoleWithI18n")
   >>> isinstance(role.id, Message)
@@ -69,10 +69,10 @@ class RoleWithoutI18n(Role):
 
 class RoleWithI18n(Role):
     grok.name(_('RoleWithI18n'))
-    grok.description(_(u'My role with i18n'))
+    grok.description(_('My role with i18n'))
 
 
 class RoleWithI18nTitle(Role):
     grok.name('RoleWithI18nTitle')
     grok.title(_('RoleWithI18n'))
-    grok.description(_(u'My role with i18n'))
+    grok.description(_('My role with i18n'))

@@ -1,4 +1,5 @@
 import doctest
+import grok.testing
 import re
 import unittest
 import grokcore.security
@@ -28,8 +29,9 @@ def suiteFromPackage(name):
             dottedname,
             checker=checker,
             extraglobs=dict(
+                getRootFolder=FunctionalLayer.getRootFolder,
                 http=http,
-                getRootFolder=FunctionalLayer.getRootFolder),
+                ),
             optionflags=(
                 doctest.ELLIPSIS +
                 doctest.NORMALIZE_WHITESPACE +
