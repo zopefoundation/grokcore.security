@@ -5,7 +5,7 @@ import unittest
 import zope.app.wsgi.testlayer
 import zope.testbrowser.wsgi
 
-from pg_resources import resource_listdir
+from pkg_resources import resource_listdir
 from zope.testing import renormalizing
 from zope.app.wsgi.testlayer import http
 
@@ -16,7 +16,7 @@ class Layer(
     pass
 
 
-layer = Layer(grokcore.view, allowTearDown=True)
+layer = Layer(grokcore.security, allowTearDown=True)
 
 
 checker = renormalizing.RENormalizing([
@@ -44,7 +44,8 @@ def suiteFromPackage(name):
             optionflags=(
                 doctest.ELLIPSIS +
                 doctest.NORMALIZE_WHITESPACE +
-                doctest.REPORT_NDIFF))
+                doctest.REPORT_NDIFF +
+                renormalizing.IGNORE_EXCEPTION_MODULE_IN_PYTHON2))
         test.layer = layer
         suite.addTest(test)
     return suite

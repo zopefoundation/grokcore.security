@@ -4,8 +4,7 @@ Changes
 1.8 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Fix several test error that came to light.
 
 1.7 (2018-01-03)
 ----------------
