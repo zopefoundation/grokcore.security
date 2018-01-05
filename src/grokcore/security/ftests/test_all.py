@@ -1,14 +1,23 @@
 import doctest
-import grok.testing
+import grokcore.security
 import re
 import unittest
-import grokcore.security
+import zope.app.wsgi.testlayer
+import zope.testbrowser.wsgi
 
-from pkg_resources import resource_listdir
+from pg_resources import resource_listdir
 from zope.testing import renormalizing
-from zope.app.wsgi.testlayer import BrowserLayer, http
+from zope.app.wsgi.testlayer import http
 
-FunctionalLayer = BrowserLayer(grokcore.security)
+
+class Layer(
+        zope.testbrowser.wsgi.TestBrowserLayer,
+        zope.app.wsgi.testlayer.BrowserLayer):
+    pass
+
+
+layer = Layer(grokcore.view, allowTearDown=True)
+
 
 checker = renormalizing.RENormalizing([
     # Accommodate to exception wrapping in newer versions of mechanize
@@ -29,14 +38,14 @@ def suiteFromPackage(name):
             dottedname,
             checker=checker,
             extraglobs=dict(
-                getRootFolder=FunctionalLayer.getRootFolder,
+                getRootFolder=layer.getRootFolder,
                 http=http,
                 ),
             optionflags=(
                 doctest.ELLIPSIS +
                 doctest.NORMALIZE_WHITESPACE +
                 doctest.REPORT_NDIFF))
-        test.layer = FunctionalLayer
+        test.layer = layer
         suite.addTest(test)
     return suite
 
