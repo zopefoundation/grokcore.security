@@ -7,7 +7,7 @@ before it can be used in grok.require().
   ...
   zope.configuration.config.ConfigurationExecutionError: \
   martian.error.GrokError: Undefined permission 'doesnt.exist' in <class \
-  'grokcore.security.tests.security.missing_permission.MissingPermission'>. \
+  'grokcore.security.tests.base.security.missing_permission.MissingPermission'>. \
   Use grok.Permission first...
 """
 import grokcore.security as grok
