@@ -5,7 +5,7 @@ Multiple calls of grok.require in one class are not allowed.
   Traceback (most recent call last):
     ...
   martian.error.GrokError: grok.require was called multiple times in \
-  <class 'grokcore.security.tests.security.multiple_require.MultipleView'>. \
+  <class 'grokcore.security.tests.base.security.multiple_require.MultipleView'>. \
   It may only be set once for a class.
 
 """
