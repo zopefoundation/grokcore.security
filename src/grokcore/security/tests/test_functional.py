@@ -1,12 +1,10 @@
 import doctest
 import grokcore.security
-import re
 import unittest
 import zope.app.wsgi.testlayer
 import zope.testbrowser.wsgi
 
 from pkg_resources import resource_listdir
-from zope.testing import renormalizing
 from zope.app.wsgi.testlayer import http
 
 
@@ -17,12 +15,6 @@ class Layer(
 
 
 layer = Layer(grokcore.security, allowTearDown=True)
-
-
-checker = renormalizing.RENormalizing([
-    # Accommodate to exception wrapping in newer versions of mechanize
-    (re.compile(r'httperror_seek_wrapper:', re.M), 'HTTPError:'),
-    ])
 
 
 def suiteFromPackage(name):
@@ -38,7 +30,6 @@ def suiteFromPackage(name):
             layer_dir, name, filename[:-3])
         test = doctest.DocTestSuite(
             dottedname,
-            checker=checker,
             extraglobs=dict(
                 getRootFolder=layer.getRootFolder,
                 http=http,
@@ -47,7 +38,7 @@ def suiteFromPackage(name):
                 doctest.ELLIPSIS +
                 doctest.NORMALIZE_WHITESPACE +
                 doctest.REPORT_NDIFF +
-                renormalizing.IGNORE_EXCEPTION_MODULE_IN_PYTHON2))
+                doctest.IGNORE_EXCEPTION_DETAIL))
         test.layer = layer
         suite.addTest(test)
     return suite
