@@ -26,7 +26,7 @@ PY2 = sys.version_info[0] == 2
 
 
 if not PY2:
-    unicode = lambda s: s
+    unicode = str
 
 
 def default_fallback_to_name(factory, module, name, **data):
@@ -54,5 +54,5 @@ class PermissionGrokker(martian.ClassGrokker):
             callable=grokcore.component.provideUtility,
             args=(permission, IPermission, name),
             order=-1  # need to do this early in the process
-            )
+        )
         return True

@@ -1,14 +1,16 @@
 from setuptools import setup, find_packages
 import os
 
+
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
+
 
 long_description = (
     read('README.txt')
     + '\n' +
     read('CHANGES.txt')
-    )
+)
 
 tests_require = [
     'grok',
@@ -17,7 +19,7 @@ tests_require = [
     'zope.configuration',
     'zope.securitypolicy',
     'zope.testing',
-    ]
+]
 
 setup(
     name='grokcore.security',
@@ -36,14 +38,16 @@ setup(
                  'Programming Language :: Python :: 2',
                  'Programming Language :: Python :: 2.7',
                  'Programming Language :: Python :: 3',
-                 'Programming Language :: Python :: 3.4',
                  'Programming Language :: Python :: 3.5',
                  'Programming Language :: Python :: 3.6',
+                 'Programming Language :: Python :: 3.7',
+                 'Programming Language :: Python :: 3.8',
+                 'Programming Language :: Python :: 3.9',
                  'Programming Language :: Python :: Implementation :: CPython',
                  'Programming Language :: Python :: Implementation :: PyPy',
                  ],
     packages=find_packages('src'),
-    package_dir = {'': 'src'},
+    package_dir={'': 'src'},
     namespace_packages=['grokcore'],
     include_package_data=True,
     zip_safe=False,
@@ -55,12 +59,12 @@ setup(
         'zope.dottedname',
         'zope.interface',
         'zope.security',
-        ],
+    ],
     tests_require=tests_require,
     extras_require={
         'role': [
             'zope.securitypolicy',
-            ],
+        ],
         'test': tests_require
-        },
+    },
 )

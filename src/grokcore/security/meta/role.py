@@ -32,7 +32,6 @@ if HAVE_ROLE:
     from grokcore.security.meta.permission import PermissionGrokker
     from grokcore.security.meta.permission import default_fallback_to_name
 
-
     class RoleGrokker(martian.ClassGrokker):
         """Grokker for components subclassed from `grok.Role`.
 
@@ -67,12 +66,12 @@ if HAVE_ROLE:
                 discriminator=('utility', IRole, name),
                 callable=grokcore.component.provideUtility,
                 args=(role, IRole, name),
-                )
+            )
 
             for permission in permissions:
                 config.action(
                     discriminator=('grantPermissionToRole', permission, name),
                     callable=rolePermissionManager.grantPermissionToRole,
                     args=(permission, name),
-                    )
+                )
             return True

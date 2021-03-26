@@ -20,6 +20,7 @@ from grokcore.security.interfaces import HAVE_ROLE
 class Permission(Permission):
     pass
 
+
 Public = 'zope.Public'
 
 

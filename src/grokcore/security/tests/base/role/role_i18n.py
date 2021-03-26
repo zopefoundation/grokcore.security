@@ -4,6 +4,7 @@ A Role component have a title and description, that can be internationalized.
 Let's grok this package and check we still have a Message object for the
 internationalized title and description of the defined roles.
 
+  >>> import grokcore.security.testing
   >>> grokcore.security.testing.grok(__name__)
   >>> from zope.securitypolicy.interfaces import IRole
   >>> from zope.component import getUtility
@@ -54,7 +55,6 @@ A grok.Role registered with name, title and description directives::
 """
 
 import grokcore.component as grok
-import grokcore.security
 
 from grokcore.security import Role
 from zope.i18nmessageid import MessageFactory

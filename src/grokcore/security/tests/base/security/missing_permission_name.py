@@ -11,5 +11,6 @@ doesn't, you'll get an error message:
 
 import grokcore.security as grok
 
+
 class MissingName(grok.Permission):
     pass

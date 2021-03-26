@@ -19,6 +19,7 @@ from zope.security.interfaces import IPermission
 from zope.security.protectclass import protectName
 from zope.security.protectclass import protectSetAttribute
 
+
 def protect_getattr(class_, name, permission=None):
     """Install a getattr permission check for the attribute ``name``.
 
@@ -27,6 +28,7 @@ def protect_getattr(class_, name, permission=None):
     permission = check_or_default_permission(class_, permission)
     protectName(class_, name, permission)
 
+
 def protect_setattr(class_, name, permission=None):
     """Install a setattr permission check for the attribute ``name``.
 
@@ -34,6 +36,7 @@ def protect_setattr(class_, name, permission=None):
     """
     permission = check_or_default_permission(class_, permission)
     protectSetAttribute(class_, name, permission)
+
 
 def check_or_default_permission(class_, permission):
     """Return default permission (zope.View) if permission is None,
@@ -45,12 +48,13 @@ def check_or_default_permission(class_, permission):
         check_permission(class_, permission)
     return permission
 
+
 def check_permission(factory, permission):
     """Check whether a permission is defined.
 
     If not, raise error for factory.
     """
     if queryUtility(IPermission, name=permission) is None:
-       raise GrokError('Undefined permission %r in %r. Use '
-                       'grok.Permission first.'
-                       % (permission, factory), factory)
+        raise GrokError('Undefined permission %r in %r. Use '
+                        'grok.Permission first.'
+                        % (permission, factory), factory)

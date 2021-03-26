@@ -16,6 +16,7 @@
 from zope.interface import Interface, Attribute
 from zope.dottedname.resolve import resolve
 
+
 def api(name):
     try:
         return True, resolve(name)

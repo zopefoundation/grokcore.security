@@ -13,5 +13,6 @@ before it can be used in grok.require().
 """
 import grokcore.security as grok
 
+
 class ProtectedObject(grok.Context):
     protected = 'this is protected'

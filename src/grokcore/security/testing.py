@@ -20,6 +20,7 @@ from grokcore.component import zcml
 from grokcore.security import directive
 from grokcore.security import util
 
+
 class ClasslevelGrokker(martian.ClassGrokker):
     """Simple grokker that looks for grokk.require() directives on a
     class and checks whether the permissione exists."""
@@ -31,8 +32,9 @@ class ClasslevelGrokker(martian.ClassGrokker):
             discriminator=('protectName', factory, 'protected'),
             callable=util.protect_getattr,
             args=(factory, 'protected', permission),
-            )
+        )
         return True
+
 
 def grok(module_name):
     config = ConfigurationMachine()

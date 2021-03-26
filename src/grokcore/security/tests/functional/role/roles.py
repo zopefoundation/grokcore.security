@@ -48,23 +48,29 @@ import grokcore.view
 import grokcore.component as grok
 import zope.interface
 
+
 class ViewPermission(grokcore.security.Permission):
     grok.name('paint.ViewPainting')
+
 
 class EditPermission(grokcore.security.Permission):
     grok.name('paint.EditPainting')
 
+
 class ErasePermission(grokcore.security.Permission):
     grok.name('paint.ErasePainting')
 
+
 class ApprovePermission(grokcore.security.Permission):
     grok.name('paint.ApprovePainting')
+
 
 class PaintingOwner(grokcore.security.Role):
     grok.name('paint.PaintingOwner')
     grok.title('Painting Owner')
     grokcore.security.permissions(
         'paint.ViewPainting', 'paint.EditPainting', 'paint.ErasePainting')
+
 
 class CavePainting(grokcore.view.View):
 
@@ -74,6 +80,7 @@ class CavePainting(grokcore.view.View):
     def render(self):
         return 'What a beautiful painting.'
 
+
 class EditCavePainting(grokcore.view.View):
 
     grok.context(zope.interface.Interface)
@@ -82,6 +89,7 @@ class EditCavePainting(grokcore.view.View):
     def render(self):
         return 'Let\'s make it even prettier.'
 
+
 class EraseCavePainting(grokcore.view.View):
 
     grok.context(zope.interface.Interface)
@@ -89,6 +97,7 @@ class EraseCavePainting(grokcore.view.View):
 
     def render(self):
         return 'Oops, mistake, let\'s erase it.'
+
 
 class ApproveCavePainting(grokcore.view.View):
 
