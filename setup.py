@@ -52,6 +52,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
+        'Chameleon >= 2',
         'grokcore.component >= 2.1',
         'martian >= 0.13',
         'setuptools',
