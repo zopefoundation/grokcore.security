@@ -46,7 +46,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install tox
     - name: Test
-      run: tox -e ${{ matrix.config[1] }}
+      run: tox -vv -e ${{ matrix.config[1] }}
     - name: Coverage
       if: matrix.config[1] == 'coverage'
       run: |
