@@ -2,7 +2,7 @@
 # https://github.com/zopefoundation/meta/tree/master/config/pure-python
 [meta]
 template = "pure-python"
-commit-id = "ff37be82c6e4d7c4f0f96f4937f2d14d1aadae67"
+commit-id = "088b42973de23e2f91539abdc28173e580eeb0a1"
 
 [python]
 with-appveyor = false
@@ -23,4 +23,9 @@ additional-config = [
     "# F403 'import *' used; unable to detect undefined names",
     "per-file-ignores =",
     "    src/grokcore/security/__init__.py: F401 F403",
+    ]
+
+[manifest]
+additional-rules = [
+    "recursive-include src *.zcml",
     ]
