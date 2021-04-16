@@ -13,7 +13,7 @@ long_description = (
 )
 
 tests_require = [
-    'grok > 1',
+    'grok',
     'grokcore.view[test]',
     'zope.app.wsgi',
     'zope.configuration',
