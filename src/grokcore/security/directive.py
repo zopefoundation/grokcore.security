@@ -21,6 +21,7 @@ from martian.error import GrokImportError, GrokError
 from martian.directive import StoreMultipleTimes
 from grokcore.security import components
 
+
 class RequireDirectiveStore(StoreMultipleTimes):
 
     def get(self, directive, component, default):
@@ -36,6 +37,7 @@ class RequireDirectiveStore(StoreMultipleTimes):
 
     def pop(self, locals_, directive):
         return locals_[directive.dotted_name()].pop()
+
 
 class require(martian.Directive):
     scope = martian.CLASS
@@ -63,6 +65,7 @@ class require(martian.Directive):
         permission = self.store.pop(frame.f_locals, self)
         self.set(func, [permission])
         return func
+
 
 class permissions(martian.Directive):
     """The `grokcore.security.permissions()` directive.
@@ -96,7 +99,8 @@ class permissions(martian.Directive):
         permission_ids = []
         for value in values:
             if martian.util.check_subclass(value, components.Permission):
-                permission_ids.append(grokcore.component.name.bind().get(value))
+                permission_ids.append(
+                    grokcore.component.name.bind().get(value))
             else:
                 permission_ids.append(value)
         return permission_ids

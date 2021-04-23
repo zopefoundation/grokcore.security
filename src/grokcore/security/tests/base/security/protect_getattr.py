@@ -13,8 +13,10 @@ before it can be used in grok.require().
 """
 import grokcore.security as grok
 
+
 class ThePermission(grok.Permission):
     grok.name('the.permission')
+
 
 class ProtectedObject(grok.Context):
     grok.require(ThePermission)

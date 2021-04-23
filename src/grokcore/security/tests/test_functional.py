@@ -33,7 +33,7 @@ def suiteFromPackage(name):
             extraglobs=dict(
                 getRootFolder=layer.getRootFolder,
                 http=http,
-                ),
+            ),
             optionflags=(
                 doctest.ELLIPSIS +
                 doctest.NORMALIZE_WHITESPACE +
@@ -50,6 +50,3 @@ def test_suite():
             'role']:
         suite.addTest(suiteFromPackage(name))
     return suite
-
-if __name__ == '__main__':
-    unittest.main(defaultTest='test_suite')

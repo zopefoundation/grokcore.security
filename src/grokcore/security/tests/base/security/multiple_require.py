@@ -8,14 +8,17 @@ Multiple calls of grok.require in one class are not allowed.
   <class 'grokcore.security.tests.base.security.multiple_require.MultipleView'>. \
   It may only be set once for a class.
 
-"""
+"""  # noqa: E501 line too long
 import grokcore.security as grok
+
 
 class One(grok.Permission):
     grok.name('permission.1')
 
+
 class Two(grok.Permission):
     grok.name('permission.2')
+
 
 class MultipleView(grok.Context):
     grok.require(One)

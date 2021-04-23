@@ -29,6 +29,7 @@ meaning it has all the required attributes set.
 
 import grokcore.security as grok
 
+
 class ThePermission(grok.Permission):
     grok.name('the.permission')
     grok.title('The permission!')
