@@ -5,6 +5,7 @@ from pkg_resources import resource_listdir
 
 from zope.testing import cleanup
 
+
 def cleanUpZope(test):
     cleanup.cleanUp()
 
