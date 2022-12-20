@@ -10,8 +10,10 @@ by "name" or by class.
 """
 
 import grokcore.component as grok
+
+from grokcore.security import Permission
 from grokcore.security import Role
-from grokcore.security import Permission, permissions
+from grokcore.security import permissions
 
 
 class FirstPermission(Permission):

@@ -14,6 +14,7 @@
 """Grok components"""
 
 from zope.security.permission import Permission
+
 from grokcore.security.interfaces import HAVE_ROLE
 
 

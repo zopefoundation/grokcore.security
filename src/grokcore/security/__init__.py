@@ -15,16 +15,18 @@
 """
 from grokcore.component import *
 
-from grokcore.security.components import Permission
-from grokcore.security.components import Public
-from grokcore.security.directive import require, permissions
-
 # Import this module so that it's available as soon as you import the
 # 'grokcore.security' package.  Useful for tests and interpreter examples.
 import grokcore.security.testing
-
+from grokcore.security.components import Permission
+from grokcore.security.components import Public
+from grokcore.security.directive import permissions
+from grokcore.security.directive import require
 # Only export public API
-from grokcore.security.interfaces import IGrokcoreSecurityAPI, HAVE_ROLE
+from grokcore.security.interfaces import HAVE_ROLE
+from grokcore.security.interfaces import IGrokcoreSecurityAPI
+
+
 if HAVE_ROLE:
     from grokcore.security.components import Role
 

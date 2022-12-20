@@ -16,17 +16,16 @@
 
 from grokcore.security.interfaces import HAVE_ROLE
 
+
 if HAVE_ROLE:
-    import martian
-
     import grokcore.component
-    import grokcore.security
-
+    import martian
     from martian.error import GrokError
     from zope.i18nmessageid import Message
-    from zope.securitypolicy.rolepermission import rolePermissionManager
     from zope.securitypolicy.interfaces import IRole
+    from zope.securitypolicy.rolepermission import rolePermissionManager
 
+    import grokcore.security
     from grokcore.security.components import Role
     from grokcore.security.directive import permissions
     from grokcore.security.meta.permission import PermissionGrokker
@@ -57,10 +56,10 @@ if HAVE_ROLE:
             # We can safely convert to unicode, since the directives makes sure
             # it is either unicode already or ASCII.
             if not isinstance(title, Message):
-                title = u'{}'.format(str(title))  # python2 and 3
+                title = f'{str(title)}'  # python2 and 3
             if not isinstance(description, Message):
-                description = u'{}'.format(str(description))  # python2 and 3
-            role = factory(u'{}'.format(str(name)), title, description)
+                description = f'{str(description)}'  # python2 and 3
+            role = factory(f'{str(name)}', title, description)
 
             config.action(
                 discriminator=('utility', IRole, name),
