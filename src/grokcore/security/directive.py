@@ -14,11 +14,14 @@
 """Grok directives.
 """
 import sys
-import martian
+
 import grokcore.component
+import martian
 from martian import util
-from martian.error import GrokImportError, GrokError
 from martian.directive import StoreMultipleTimes
+from martian.error import GrokError
+from martian.error import GrokImportError
+
 from grokcore.security import components
 
 

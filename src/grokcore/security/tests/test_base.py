@@ -3,7 +3,9 @@ import re
 import unittest
 
 from pkg_resources import resource_listdir
-from zope.testing import cleanup, renormalizing
+
+from zope.testing import cleanup
+from zope.testing import renormalizing
 
 
 def cleanUpZope(test):
@@ -16,7 +18,7 @@ checker = renormalizing.RENormalizing([
 
 def suiteFromPackage(name):
     layer_dir = 'base'
-    files = resource_listdir(__name__, '{}/{}'.format(layer_dir, name))
+    files = resource_listdir(__name__, f'{layer_dir}/{name}')
     suite = unittest.TestSuite()
     for filename in files:
         if not filename.endswith('.py'):
@@ -25,7 +27,7 @@ def suiteFromPackage(name):
             continue
         if filename == '__init__.py':
             continue
-        dottedname = 'grokcore.security.tests.%s.%s.%s' % (
+        dottedname = 'grokcore.security.tests.{}.{}.{}'.format(
             layer_dir, name, filename[:-3])
         test = doctest.DocTestSuite(
             dottedname,

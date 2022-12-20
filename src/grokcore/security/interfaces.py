@@ -13,8 +13,9 @@
 ##############################################################################
 """Grok interfaces
 """
-from zope.interface import Interface, Attribute
 from zope.dottedname.resolve import resolve
+from zope.interface import Attribute
+from zope.interface import Interface
 
 
 def api(name):

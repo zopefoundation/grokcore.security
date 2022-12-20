@@ -1,10 +1,11 @@
 import grokcore.component as grok
+
 import grokcore.security
 
 
-class NotAPermissionSubclass(object):
+class NotAPermissionSubclass:
     grok.name('not really a permission')
 
 
-class MyRole(object):
+class MyRole:
     grokcore.security.permissions(NotAPermissionSubclass)

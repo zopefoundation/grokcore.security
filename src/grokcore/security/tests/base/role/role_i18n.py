@@ -55,9 +55,10 @@ A grok.Role registered with name, title and description directives::
 """
 
 import grokcore.component as grok
+from zope.i18nmessageid import MessageFactory
 
 from grokcore.security import Role
-from zope.i18nmessageid import MessageFactory
+
 
 _ = MessageFactory("testi18n")
 

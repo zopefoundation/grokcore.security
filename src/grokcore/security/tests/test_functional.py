@@ -1,11 +1,13 @@
 import doctest
-import grokcore.security
 import unittest
-import zope.app.wsgi.testlayer
-import zope.testbrowser.wsgi
 
 from pkg_resources import resource_listdir
+
+import zope.app.wsgi.testlayer
+import zope.testbrowser.wsgi
 from zope.app.wsgi.testlayer import http
+
+import grokcore.security
 
 
 class Layer(
@@ -19,14 +21,14 @@ layer = Layer(grokcore.security, allowTearDown=True)
 
 def suiteFromPackage(name):
     layer_dir = 'functional'
-    files = resource_listdir(__name__, '{}/{}'.format(layer_dir, name))
+    files = resource_listdir(__name__, f'{layer_dir}/{name}')
     suite = unittest.TestSuite()
     for filename in files:
         if not filename.endswith('.py'):
             continue
         if filename == '__init__.py':
             continue
-        dottedname = 'grokcore.security.tests.%s.%s.%s' % (
+        dottedname = 'grokcore.security.tests.{}.{}.{}'.format(
             layer_dir, name, filename[:-3])
         test = doctest.DocTestSuite(
             dottedname,
