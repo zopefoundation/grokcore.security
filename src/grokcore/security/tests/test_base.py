@@ -1,19 +1,12 @@
 import doctest
-import re
 import unittest
 
 from pkg_resources import resource_listdir
 
 from zope.testing import cleanup
-from zope.testing import renormalizing
-
 
 def cleanUpZope(test):
     cleanup.cleanUp()
-
-
-checker = renormalizing.RENormalizing([
-    (re.compile(r"martian.error.GrokError:"), r'GrokError:')])
 
 
 def suiteFromPackage(name):
@@ -32,11 +25,9 @@ def suiteFromPackage(name):
         test = doctest.DocTestSuite(
             dottedname,
             tearDown=cleanUpZope,
-            checker=checker,
             optionflags=(
                 doctest.ELLIPSIS +
-                doctest.NORMALIZE_WHITESPACE +
-                renormalizing.IGNORE_EXCEPTION_MODULE_IN_PYTHON2))
+                doctest.NORMALIZE_WHITESPACE))
         suite.addTest(test)
     return suite
 
