@@ -9,9 +9,9 @@ def read(*rnames):
 
 
 long_description = (
-    read('README.txt')
+    read('README.rst')
     + '\n' +
-    read('CHANGES.txt')
+    read('CHANGES.rst')
 )
 
 tests_require = [
@@ -26,9 +26,8 @@ setup(
     name='grokcore.security',
     version='4.0.dev0',
     author='Grok Team',
-    author_email='grok-dev@zope.org',
-    url='http://grok.zope.org',
-    download_url='http://pypi.python.org/pypi/grokcore.security',
+    author_email='zope-dev@zope.dev',
+    url='https://github.com/zopefoundation/grokcore.security',
     description='Grok-like configuration for Zope security components',
     long_description=long_description,
     license='ZPL',
@@ -51,6 +50,7 @@ setup(
     namespace_packages=['grokcore'],
     include_package_data=True,
     zip_safe=False,
+    python_requires='>=3.7',
     install_requires=[
         'Chameleon >= 2',
         'grokcore.component >= 2.1',
