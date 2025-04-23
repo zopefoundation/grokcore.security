@@ -21,7 +21,7 @@ from zope.interface import Interface
 def api(name):
     try:
         return True, resolve(name)
-    except ImportError:
+    except ModuleNotFoundError:
         return False, Interface
 
 
