@@ -1,7 +1,6 @@
 import doctest
+import importlib.resources
 import unittest
-
-from pkg_resources import resource_listdir
 
 import zope.app.wsgi.testlayer
 import zope.testbrowser.wsgi
@@ -21,7 +20,11 @@ layer = Layer(grokcore.security, allowTearDown=True)
 
 def suiteFromPackage(name):
     layer_dir = 'functional'
-    files = resource_listdir(__name__, f'{layer_dir}/{name}')
+    package = __package__
+    resource_path = f'{layer_dir}/{name}'
+    files = []
+    files = [entry.name for entry in importlib.resources.files(
+        package).joinpath(resource_path).iterdir() if entry.is_file()]
     suite = unittest.TestSuite()
     for filename in files:
         if not filename.endswith('.py'):
