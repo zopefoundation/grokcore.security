@@ -1,14 +1,63 @@
 # Generated with zope.meta (https://zopemeta.readthedocs.io/) from:
 # https://github.com/zopefoundation/meta/tree/master/src/zope/meta/pure-python
-# Generated from:
-# https://github.com/zopefoundation/meta/tree/master/config/pure-python
-
 [build-system]
 requires = [
     "setuptools >= 78.1.1,< 81",
     "wheel",
 ]
 build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "grokcore.security"
+version = "5.1.dev0"
+description = "Grok-like configuration for Zope security components"
+license = "ZPL"
+classifiers = [
+    "Intended Audience :: Developers",
+    "Development Status :: 6 - Mature",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+dynamic = ["readme"]
+requires-python = ">=3.10"
+authors = [
+    {name = "Grok Team",email = "zope-dev@zope.dev"},
+]
+maintainers = [
+    {name = "Plone Foundation and contributors",email = "zope-dev@zope.dev"},
+]
+dependencies = [
+    "Chameleon >= 2",
+    "grokcore.component >= 2.1",
+    "martian >= 0.13",
+    "zope.component",
+    "zope.dottedname",
+    "zope.interface",
+    "zope.security",
+]
+
+[project.optional-dependencies]
+role = ["zope.securitypolicy"]
+test = [
+    "grokcore.view[test]",
+    "zope.app.wsgi",
+    "zope.configuration",
+    "zope.securitypolicy",
+    "zope.testing",
+]
+
+[project.urls]
+Source = "https://github.com/zopefoundation/grokcore.security"
+Issues = "https://github.com/zopefoundation/grokcore.security/issues"
+Changelog = "https://raw.githubusercontent.com/zopefoundation/grokcore.security/master/CHANGES.rst"
 
 [tool.coverage.run]
 branch = true
@@ -32,3 +81,7 @@ exclude_lines = [
 
 [tool.coverage.html]
 directory = "parts/htmlcov"
+
+[tool.setuptools.dynamic]
+readme = {file = ["README.rst", "CHANGES.rst"]}
+
