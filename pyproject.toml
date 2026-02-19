@@ -10,7 +10,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "grokcore.security"
-version = "5.1"
+version = "5.2.dev0"
 description = "Grok-like configuration for Zope security components"
 license = "ZPL-2.1"
 classifiers = [
